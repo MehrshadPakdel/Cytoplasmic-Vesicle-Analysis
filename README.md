@@ -1,14 +1,16 @@
-# Cytoplasmic-Vesicle-Analysis
-A FIJI / ImageJ macro to measure number of cytoplasmic vesicles in single stack microscopy images.
+# ER-to-Golgi-Transport
+A FIJI / ImageJ macros to measure transport of RUSH cargos from ER to Golgi by calculating normalized Golgi area over time. This analysis is a readout how quick cargo is trafficking through the secretory pathway.  
 
 # Goal
-The macro faciliates the quantification of cytoplasmic vesicles in single stack microscopy images. This macro is based on the [RUSH-Vesicle-Analysis](https://github.com/MehrshadPakdel/RUSH-Vesicle-Analysis) macro. Note, this macro is optimized for confocal images acquired by an 60x/1.4 oil objective. Change annotated functions in the code accordingly.
+Normalized Golgi area over time is calculated by the Golgi area at each frame of a movie divided by the ER area at frame1. Part1 of the macro will process images extract the ER object at frame1 and measure its size. Part2 of the macro will process images and extract Golgi objects and measure Golgi areas for each frame of the movie. Ratio of Golgi per frame / ER t=0 is calculated elsewhere to obtain normalized Golgi areas over time. 
+
+Future work will improve hard coded variables and combine Part1 + Part2 and the normalization calculations.
 
 # Installation
 Simply copy the macro file to your macro folder in your [Fiji](https://imagej.net/Fiji) directory and restart Fiji. You can access the macro from the Plugin section in Fiji.
 
 # Usage
-Acquire single stack images cells that express your reporter or are labeled with the probe of your interest. Start the macro and choose how many cells you want to analyze. Select your cell(s) by e.g. polygon or rectangular selection tools. A binary image is generated and the macro uses the particle analyzer of selected cell(s) and prints the number of delected vesicles to the log file. All processed images and log files will be saved in a results folder in the image directory.
+Acquire multi-frame stack movies of cells expressing e.g. RUSH cargos that allow to follow their transport from ER to Golgi. Measure first the ER area at frame1 by selecting a manual threshold that covers the whole ER area. Next, measure Golgi areas for each frame of the movie. Note, that due to fragmented Golgis, the macro will count several Golgi objects per frame. These areas can be summed elsewhere.
 
 # Citation
-The macro will be uploaded and the citation will be updated as soon as the publication is released.
+The citation will be updated as soon as the publication is released.
